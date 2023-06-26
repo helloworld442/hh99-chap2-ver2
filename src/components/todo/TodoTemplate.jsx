@@ -7,7 +7,9 @@ const TodoTemplateBlock = styled.div`
   min-width: 800px;
   height: 100%;
   margin-top: 38px;
-  background: orange;
+  background: #edf1f3;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const TodoTemplate = () => (
