@@ -13,8 +13,7 @@ const IconBox = styled.div`
             margin-right: 16px;
         }
         .icon-box > #check-icon {
-            font-size: 26px;
-            margin-bottom: 3px;
+            height: 24px;
             margin-right: 16px;
         }
         .icon-box > #delete-icon {
@@ -22,6 +21,7 @@ const IconBox = styled.div`
         }
     }
     .icon-box > #check-icon {
+        height: 14px;
         color: #878787;
         margin-right: 8px;
         transition: all 0.3s ease-in-out;

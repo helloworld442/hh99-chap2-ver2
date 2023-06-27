@@ -7,6 +7,7 @@ import IconBox from '../common/Box/IconBox';
 import { useDispatch } from 'react-redux';
 import { deleteItem, toggleItem } from '../../redux/modules/todos';
 import { Link } from 'react-router-dom';
+import { ReactComponent as Heartcheck } from '../../lib/assets/heartcheck.svg';
 
 const TodoItemBlock = styled.ul`
     max-height: 600px;
@@ -117,10 +118,12 @@ function TodoListItem({ todos, workState, toggles }) {
                             <IconBox className={getKeyByValue()}>
                                 <IdBox className="id-box">{item.id}</IdBox>
                                 <div className="icon-box">
-                                    <FontAwesomeIcon
+                                    <Heartcheck
                                         icon={faHeart}
                                         id="check-icon"
-                                        style={{ color: isdoneIconColor }}
+                                        style={{
+                                            fill: isdoneIconColor,
+                                        }}
                                         onClick={() => {
                                             dispatch(toggleItem(item.id));
                                         }}
