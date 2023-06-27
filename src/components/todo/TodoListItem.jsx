@@ -1,23 +1,27 @@
-import React, { useEffect } from 'react';
-import { styled } from 'styled-components';
+import React, { useState, useEffect } from 'react';
+import { styled, css } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { useSelector, useDispatch } from 'react-redux';
-import { deleteItem } from '../../redux/modules/todos';
+import IdBox from '../common/Box/IdBox';
+import IconBox from '../common/Box/IconBox';
+import { useDispatch } from 'react-redux';
+import { deleteItem, toggleItem } from '../../redux/modules/todos';
+import { Link } from 'react-router-dom';
 
 const TodoItemBlock = styled.ul`
-    width: 100%;
-    /* height: 80vh; */
+    max-height: 600px;
+    overflow-y: scroll;
     box-sizing: border-box;
-    padding: 0 30px;
+    padding: 10px 30px;
     margin: 0;
     list-style: none;
     display: flex;
+    justify-content: flex-start;
     flex-wrap: wrap;
     gap: 12px 14px;
 `;
+
 const TodoItem = styled.li`
-    width: 194px;
     height: 108px;
     border-radius: 8px;
     box-shadow: 0px 0px 10px #e8e8e8;
@@ -26,65 +30,117 @@ const TodoItem = styled.li`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-`;
-const IconBox = styled.div`
-    display: flex;
-    justify-content: space-between;
-`;
-const IdBox = styled.div`
-    width: 16px;
-    height: 16px;
-    background-color: #e1f9f2;
-    color: #31be86;
-    border-radius: 8px;
-    font-size: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    &:hover {
+        transform: scale(1.06);
+        box-shadow: 0px 0px 15px #e8e8e8;
+    }
+    &.hamburger {
+        flex: 1 1 194px;
+    }
+    &.BorderAll {
+        width: 194px;
+        height: 194px;
+        justify-content: flex-start;
+    }
+    &.ListUl {
+        flex: 1 1 100%;
+        max-width: 835px;
+        flex-direction: row;
+        align-items: center;
+        height: 80px;
+        &:hover {
+            transform: scale(1.03);
+        }
+    }
+    .content-box {
+        width: 166px;
+        &.BorderAll {
+            .link > .title {
+                font-size: 16px;
+                margin: 12px 0 8px;
+            }
+            .link > .content {
+                white-space: pre-line;
+                line-height: 21.5px;
+            }
+        }
+        &.ListUl {
+            width: 65%;
+            .link > .title {
+                font-size: 20px;
+            }
+        }
+    }
+    .content-box > .link > .title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #333;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 1.8rem;
+        &:hover {
+            color: #31af7f;
+        }
+    }
+    .content-box > .link > .content {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #555;
+        font-size: 14px;
+    }
 `;
 
-function TodoListItem() {
-    const todo = useSelector((state) => {
-        return state.todos;
-    });
-    const workState = useSelector((state) => {
-        return state.workState;
-    });
-
+function TodoListItem({ todos, workState, toggles }) {
     const dispatch = useDispatch();
+    const getKeyByValue = () => {
+        for (let key in toggles) {
+            if (toggles.hasOwnProperty(key) && toggles[key] === true) {
+                return key;
+            }
+        }
+        return 'hamburger';
+    };
+    let isdoneIconColor = `#878787`;
+    workState ? (isdoneIconColor = '#31af7f') : (isdoneIconColor = '#878787');
+
     return (
         <TodoItemBlock>
-            {todo
-                .filter((item) => {
-                    return item.isDone === workState.isdone;
-                })
+            {todos
+                .filter((item) => item.isDone === workState)
                 .map((item) => {
                     return (
-                        <TodoItem>
-                            <IconBox>
-                                <IdBox>{item.id}</IdBox>
+                        <TodoItem key={item.id} className={getKeyByValue()}>
+                            <IconBox className={getKeyByValue()}>
+                                <IdBox className="id-box">{item.id}</IdBox>
                                 <div className="icon-box">
                                     <FontAwesomeIcon
                                         icon={faHeart}
-                                        style={{ color: '#31af7f', marginRight: `8px` }}
+                                        id="check-icon"
+                                        style={{ color: isdoneIconColor }}
+                                        onClick={() => {
+                                            dispatch(toggleItem(item.id));
+                                        }}
                                     />
                                     <FontAwesomeIcon
                                         icon={faXmark}
-                                        style={{ fontSize: `18px` }}
+                                        id="delete-icon"
                                         onClick={() => {
                                             dispatch(deleteItem(item.id));
                                         }}
                                     />
                                 </div>
                             </IconBox>
-                            <div className="content-box">
-                                <div
-                                    className="title"
-                                    style={{ fontSize: `16px`, fontWeight: `700` }}
-                                >
-                                    {item.title}
-                                </div>
-                                <div style={{ color: `#555`, fontSize: `14px` }}>{item.body}</div>
+                            <div className={`content-box ${getKeyByValue()}`}>
+                                <Link to={'/detail/' + item.id} className="link">
+                                    <div className="title" id="title">
+                                        {item.title}
+                                    </div>
+                                    <div className="content">{item.content}</div>
+                                </Link>
                             </div>
                         </TodoItem>
                     );
