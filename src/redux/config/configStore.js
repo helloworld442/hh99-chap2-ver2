@@ -1,9 +1,11 @@
-import { createStore } from "redux";
-import { combineReducers } from "redux";
-import todos from "../modules/todos";
+import { createStore } from 'redux';
+import { combineReducers } from 'redux';
+import todos from '../modules/todos';
+import workState from '../modules/selectChange';
 
 const rootReducer = combineReducers({
-  todos,
+    todos,
+    workState,
 });
 
 const store = createStore(rootReducer);
