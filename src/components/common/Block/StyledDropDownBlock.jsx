@@ -30,10 +30,18 @@ const StyledDropDownBlock = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
+    .countNum {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     &.active {
       color: #31be86;
       .countNum {
         background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
   }

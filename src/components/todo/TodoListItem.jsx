@@ -1,16 +1,15 @@
 import React from "react";
 import { styled } from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faXmark } from "@fortawesome/free-solid-svg-icons";
 import IdBox from "../common/Box/IdBox";
 import IconBox from "../common/Box/IconBox";
 import { useDispatch } from "react-redux";
 import { deleteItem, toggleItem } from "../../redux/modules/todos";
-import { Link } from "react-router-dom";
-import { ReactComponent as Heartcheck } from "../../lib/assets/heartcheck.svg";
+import { ReactComponent as Check } from "../../lib/assets/check.svg";
+import { ReactComponent as Delete } from "../../lib/assets/trash.svg";
+import StyledContent from "../common/Block/StyledContentBlock";
 
 const TodoItemBlock = styled.ul`
-  max-height: 600px;
+  max-height: 62.3vh;
   overflow-y: scroll;
   box-sizing: border-box;
   padding: 10px;
@@ -26,78 +25,36 @@ const TodoItemBlock = styled.ul`
 `;
 
 const TodoItem = styled.li`
-  height: 108px;
+  position: relative;
   border-radius: 8px;
   box-shadow: 0px 0px 10px #e8e8e8;
-  background-color: #edf1f3;
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  background-color: #fff;
   transition: all 0.3s ease-in-out;
   overflow: hidden;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
   &:hover {
     background-color: #fefefe;
     box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
   }
   &.BorderAll {
+    height: 108px;
     flex: 1 1 194px;
   }
   &.ListUl {
     flex: 1 1 100%;
-    max-width: 875px;
-    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    height: 80px;
-  }
-  .content-box {
-    width: 166px;
-    &.BorderAll {
-      .link > .title {
-        font-size: 16px;
-        margin: 12px 0 8px;
-      }
-      .link > .content {
-        white-space: pre-line;
-        line-height: 21.5px;
-      }
-    }
-    &.ListUl {
-      width: 65%;
-      .link > .title {
-        font-size: 20px;
-      }
-    }
-  }
-  .content-box > .link > .title {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: #333;
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 1.8rem;
-    &:hover {
-      color: #31af7f;
-    }
-  }
-  .content-box > .link > .content {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: #555;
-    font-size: 14px;
+    padding: 24px;
+    box-sizing: border-box;
   }
 `;
 
 function TodoListItem({ todos, workState, toggles }) {
   const dispatch = useDispatch();
-  console.log(toggles);
+
   const getKeyByValue = () => {
     for (let key in toggles) {
-      //hasOwnProperty(): 객체가 특정 프로퍼티를 가지고 있는지 불리언 값을 반환
+      //hasOwnProperty():객체가 특정 프로퍼티를 가지고 있는지 불리언 값을 반환
       if (toggles[key] && key) {
         return key;
       }
@@ -105,9 +62,9 @@ function TodoListItem({ todos, workState, toggles }) {
   };
 
   const isdoneColor = (isdone) => {
-    return isdone === true ? "#31af7f" : "#878787";
+    return isdone === true ? "#31af7f" : "#b5b5b5";
   };
-
+  console.log(getKeyByValue());
   const todoList = () => {
     if (workState === "all") {
       return todos;
@@ -121,38 +78,25 @@ function TodoListItem({ todos, workState, toggles }) {
       {todoList().map((item, idx) => {
         return (
           <TodoItem key={item.id} className={getKeyByValue()}>
+            <IdBox className={getKeyByValue()}>{idx + 1}</IdBox>
+            <StyledContent item={item} getKeyByvalue={getKeyByValue()} />
             <IconBox
               className={getKeyByValue()}
               isdonecolor={isdoneColor(item.isDone)}
             >
-              <IdBox className="id-box">{idx + 1}</IdBox>
-              <div className="icon-box">
-                <Heartcheck
-                  icon={faHeart}
-                  id="check-icon"
-                  onClick={() => {
-                    alert("완료!");
-                    dispatch(toggleItem(item.id));
-                  }}
-                />
-                <FontAwesomeIcon
-                  icon={faXmark}
-                  id="delete-icon"
-                  onClick={() => {
-                    alert("삭제!");
-                    dispatch(deleteItem(item.id));
-                  }}
-                />
-              </div>
+              <Check
+                id="check-icon"
+                onClick={() => {
+                  dispatch(toggleItem(item.id));
+                }}
+              />
+              <Delete
+                id="delete-icon"
+                onClick={() => {
+                  dispatch(deleteItem(item.id));
+                }}
+              />
             </IconBox>
-            <div className={`content-box ${getKeyByValue()}`}>
-              <Link to={"/detail/" + item.id} className="link">
-                <div className="title" id="title">
-                  {item.title}
-                </div>
-                <div className="content">{item.content}</div>
-              </Link>
-            </div>
           </TodoItem>
         );
       })}

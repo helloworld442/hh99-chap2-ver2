@@ -1,37 +1,54 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faListUl, faBorderAll } from "@fortawesome/free-solid-svg-icons";
+import { faListUl } from "@fortawesome/free-solid-svg-icons";
 import { styled } from "styled-components";
 import classNames from "classnames";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toggleItem } from "../../../redux/modules/toggle";
+import { ReactComponent as Dashboard } from "../../../lib/assets/dashboard.svg";
 
 const StyledListUIBlock = styled.div`
-  color: #b0ccbf;
   background: #c9f4e9;
-  padding: 0;
+  padding: 7px 9px;
   margin: 10px;
   border-radius: 25px;
   box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
-  #icon {
-    border-radius: 25px;
-    font-size: 1.6rem;
-    padding: 5px 6px;
-    margin: 6px 8px;
-    transition: all 0.5s ease-in-out;
+  box-sizing: border-box;
+  display: flex;
+`;
+const ListIcon = styled.div`
+  box-sizing: border-box;
+  width: 33px;
+  height: 33px;
+  padding: 6px 6px;
+  border-radius: 25px;
+  font-size: 1.6rem;
+  fill: #b0ccbf;
+  color: #b0ccbf;
+  transition: all 0.5s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:nth-child(1) {
+    margin-right: 12px;
   }
-  #icon:hover,
-  #icon:focus {
-    background: #fff;
-    color: #31be86;
-  }
-  .active {
+  &:hover,
+  &:focus {
     background: #fff;
     color: #31be86;
     box-shadow: 1px 1px 2px #babecc, -1px -1px 2px #fff;
   }
+  &.active {
+    background: #fff;
+    color: #31be86;
+    fill: #31be86;
+    box-shadow: 1px 1px 2px #babecc, -1px -1px 2px #fff;
+  }
+  #svgicon {
+    width: 100%;
+    height: 100%;
+  }
 `;
-
 const StyledListUI = () => {
   const toggleObj = { BorderAll: true, ListUl: false };
   const [toggleBtns, setToggleBtns] = useState(toggleObj);
@@ -48,18 +65,18 @@ const StyledListUI = () => {
   };
   return (
     <StyledListUIBlock>
-      <FontAwesomeIcon
-        icon={faBorderAll}
-        id="icon"
+      <ListIcon
         className={classNames({ active: toggleBtns["BorderAll"] })}
         onClick={() => onClickHandler(0)}
-      />
-      <FontAwesomeIcon
-        icon={faListUl}
-        id="icon"
+      >
+        <Dashboard id="svgicon" />
+      </ListIcon>
+      <ListIcon
         className={classNames({ active: toggleBtns["ListUl"] })}
         onClick={() => onClickHandler(1)}
-      />
+      >
+        <FontAwesomeIcon icon={faListUl} />
+      </ListIcon>
     </StyledListUIBlock>
   );
 };

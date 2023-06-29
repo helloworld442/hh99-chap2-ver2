@@ -17,7 +17,7 @@ const TodoInsertBlock = styled.div`
     padding: 25px;
     border-radius: 15px;
     background: #edf1f3;
-    margin: 0 20px 0 30px;
+    margin: 0 20px 0 20px;
     box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.1);
     background-color: #31be86;
     color: #fff;
