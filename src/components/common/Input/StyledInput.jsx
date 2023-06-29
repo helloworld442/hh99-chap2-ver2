@@ -4,13 +4,12 @@ const StyledInputBox = styled.div`
   display: flex;
   flex-direction: column;
   input {
-    width: 194px;
-    height: 32px;
+    height: ${(props) => props.height || `32px`};
     padding: 12px;
     margin: 10px 0 10px 0;
     box-sizing: border-box;
     border: 1px solid #fff;
-    border-radius: 25px;
+    border-radius: ${(props) => props.radius || `25px`};
     outline: none;
     background: #edf1f3;
     font-size: 1rem;
@@ -30,8 +29,8 @@ const StyledInputBox = styled.div`
   }
 `;
 
-const StyledInput = ({ value, onChange }) => (
-  <StyledInputBox>
+const StyledInput = ({ value, onChange, height, radius }) => (
+  <StyledInputBox height={height} radius={radius}>
     <label htmlFor="title">title</label>
     <input
       type="text"

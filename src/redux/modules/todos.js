@@ -57,8 +57,8 @@ function todos(state = initialState, action) {
     case CREATE:
       return state.concat(action.todo);
     case UPDATE:
-      state.filter((todo) => todo.id !== action.id);
-      return state.push(action.todo);
+      state.splice(action.id - 1, 1, action.todo);
+      return [...state];
     case DELETE:
       return state.filter((todo) => todo.id !== action.id);
     default:

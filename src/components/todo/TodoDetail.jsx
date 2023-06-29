@@ -1,15 +1,15 @@
 import { styled } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import BackBut from "../common/Button/BackButton";
 import TitleBox from "../common/Box/TitleBox";
 import ContentBox from "../common/Box/ContentBox";
 import DetailIconBox from "../common/Box/DetailIconBox";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { faPenToSquare, faReply } from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { deleteItem, toggleItem } from "../../redux/modules/todos";
 import { ReactComponent as Check } from "../../lib/assets/check.svg";
 import { ReactComponent as Trash } from "../../lib/assets/trash.svg";
+import BackButton from "../common/Button/BackButton";
 
 const TodoDetailBlock = styled.div`
   width: 100vw;
@@ -62,10 +62,7 @@ const TodoDetail = ({ todo }) => {
       <TodoDetailBlock key={todo.id}>
         <DetailPage>
           <Link to="/">
-            <BackBut>
-              <FontAwesomeIcon icon={faReply} id="icon-reply" />
-              이전
-            </BackBut>
+            <BackButton />
           </Link>
           <TitleBox>
             {todo.title}

@@ -4,7 +4,7 @@ const StyledTextAreaBox = styled.div`
   display: flex;
   flex-direction: column;
   textarea {
-    width: 194px;
+    width: 100%;
     height: 250px;
     padding: 15px;
     margin: 10px 0 10px 0;
