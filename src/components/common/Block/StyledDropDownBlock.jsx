@@ -51,10 +51,10 @@ const Glider = styled.span`
   height: 32px;
   width: 150px;
   z-index: 1;
+  box-shadow: 2px 2px 2px #94d3c1, -1px -1px 2px #fff;
   border-radius: 99px; // just a high number to create pill effect
   transition: 0.25s ease-out;
   background-color: #c9f4e9;
-  box-shadow: 1px 1px 2px #babecc, -1px -1px 2px #fff;
   transform: translateX(${(props) => props.translatevalue}%);
 `;
 

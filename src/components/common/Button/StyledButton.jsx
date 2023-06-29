@@ -9,14 +9,17 @@ const StyledButtonBox = styled.div`
     padding: 0;
     border: none;
     border-radius: 10px;
-    /* color: #fff; */
-    color: #31be86;
+    color: #fff;
+    background-color: #31be86;
     font-weight: 700;
     transition: all 0.3s ease-in-out;
-    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.1);
+    box-shadow: 5px 5px 5px #1f9361, -3px -3px 5px #3edd99;
     &:hover {
+      box-shadow: 2px 2px 5px #1f9361, 2px -2px 5px #3edd99;
+      font-size: 14px;
     }
-    &:focus {
+    &:active {
+      box-shadow: inset 2px 2px 3px #1f9361, inset -2px -2px 3px #3edd99;
     }
   }
 `;

@@ -1,13 +1,15 @@
 import { styled } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faXmark, faReply } from "@fortawesome/free-solid-svg-icons";
 import BackBut from "../common/Button/BackButton";
 import TitleBox from "../common/Box/TitleBox";
 import ContentBox from "../common/Box/ContentBox";
 import DetailIconBox from "../common/Box/DetailIconBox";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { faPenToSquare, faReply } from "@fortawesome/free-solid-svg-icons";
 import { deleteItem, toggleItem } from "../../redux/modules/todos";
+import { ReactComponent as Check } from "../../lib/assets/check.svg";
+import { ReactComponent as Trash } from "../../lib/assets/trash.svg";
 
 const TodoDetailBlock = styled.div`
   width: 100vw;
@@ -28,6 +30,25 @@ const DetailPage = styled.div`
   box-shadow: 0px 0px 10px #e8e8e8;
   position: relative;
   word-break: break-all;
+  .id-num {
+    font-size: 18px;
+    font-weight: 500;
+    /* padding: 0 23px; */
+    margin-left: 10px;
+    line-height: 0;
+    color: #31be86;
+  }
+  #pen {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 31px;
+    transform: translate(24px, 49px);
+    color: #b8b8b8;
+    &:hover {
+      color: #31be86;
+    }
+  }
 `;
 
 const TodoDetail = ({ todo }) => {
@@ -36,7 +57,7 @@ const TodoDetail = ({ todo }) => {
 
   try {
     let isdoneIconColor = `#878787`;
-    todo.isDone ? (isdoneIconColor = "#31af7f") : (isdoneIconColor = "#878787");
+    todo.isDone ? (isdoneIconColor = "#31af7f") : (isdoneIconColor = "#a9a9a9");
     return (
       <TodoDetailBlock key={todo.id}>
         <DetailPage>
@@ -46,18 +67,22 @@ const TodoDetail = ({ todo }) => {
               이전
             </BackBut>
           </Link>
-          <TitleBox>{todo.title}</TitleBox>
+          <TitleBox>
+            {todo.title}
+            <span className="id-num">NO.{todo.id}</span>
+          </TitleBox>
           <ContentBox>{todo.content}</ContentBox>
+          <Link to={"/update/" + todo.id}>
+            <FontAwesomeIcon icon={faPenToSquare} id="pen" />
+          </Link>
           <DetailIconBox isdoneColor={isdoneIconColor}>
-            <FontAwesomeIcon
-              icon={faHeart}
+            <Check
               id="icon-heart"
               onClick={() => {
                 dispatch(toggleItem(todo.id));
               }}
             />
-            <FontAwesomeIcon
-              icon={faXmark}
+            <Trash
               id="icon-Xmark"
               onClick={() => {
                 dispatch(deleteItem(todo.id));

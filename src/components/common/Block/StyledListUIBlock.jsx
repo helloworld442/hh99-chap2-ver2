@@ -12,7 +12,7 @@ const StyledListUIBlock = styled.div`
   padding: 7px 9px;
   margin: 10px;
   border-radius: 25px;
-  box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+  box-shadow: inset 2px 2px 2px #94d3c1, inset -1px -1px 2px #fff;
   box-sizing: border-box;
   display: flex;
 `;
