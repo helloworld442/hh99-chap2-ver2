@@ -38,21 +38,29 @@ const StyledInputBox = styled.div`
   }
 `;
 
-const StyledInput = ({ value, onChange, height, radius }) => (
-  <StyledInputBox height={height} radius={radius}>
-    <label htmlFor="title">title</label>
-    <input
-      type="text"
-      id="title"
-      name="title"
-      autoComplete="off"
-      value={value}
-      onChange={onChange}
-    />
-    <label htmlFor="title" id="title-length" className={active ? "active" : ""}>
-      {value.length} / 23
-    </label>
-  </StyledInputBox>
-);
+const StyledInput = ({ value, onChange, height, radius }) => {
+  let active = false;
+  if (value.length > 23) active = true;
+  return (
+    <StyledInputBox height={height} radius={radius}>
+      <label htmlFor="title">title</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        autoComplete="off"
+        value={value}
+        onChange={onChange}
+      />
+      <label
+        htmlFor="title"
+        id="title-length"
+        className={active ? "active" : ""}
+      >
+        {value.length} / 23
+      </label>
+    </StyledInputBox>
+  );
+};
 
 export default StyledInput;
