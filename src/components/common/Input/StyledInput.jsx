@@ -27,6 +27,15 @@ const StyledInputBox = styled.div`
     font-weight: 650;
     font-size: 16px;
   }
+  #title-length {
+    text-align: right;
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .active {
+    color: red;
+  }
 `;
 
 const StyledInput = ({ value, onChange, height, radius }) => (
@@ -40,6 +49,9 @@ const StyledInput = ({ value, onChange, height, radius }) => (
       value={value}
       onChange={onChange}
     />
+    <label htmlFor="title" id="title-length" className={active ? "active" : ""}>
+      {value.length} / 23
+    </label>
   </StyledInputBox>
 );
 
