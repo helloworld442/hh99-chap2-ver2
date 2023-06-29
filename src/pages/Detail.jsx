@@ -1,7 +1,7 @@
-import TodoDetail from "../components/todo/TodoDetail";
+import TodoDetailContainer from "../containers/TodoDetailContainer";
 
 const DetailPage = () => {
-  return <TodoDetail />;
+  return <TodoDetailContainer />;
 };
 
 export default DetailPage;

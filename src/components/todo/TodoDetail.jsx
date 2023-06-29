@@ -31,11 +31,12 @@ const DetailPage = styled.div`
 `;
 
 const TodoDetail = ({ todo }) => {
-    let isdoneIconColor = `#878787`;
-    todo.isDone ? (isdoneIconColor = '#31af7f') : (isdoneIconColor = '#878787');
-    const dispatch = useDispatch();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     try {
+        let isdoneIconColor = `#878787`;
+        todo.isDone ? (isdoneIconColor = '#31af7f') : (isdoneIconColor = '#878787');
         return (
             <TodoDetailBlock key={todo.id}>
                 <DetailPage>
@@ -47,11 +48,11 @@ const TodoDetail = ({ todo }) => {
                     </Link>
                     <TitleBox>{todo.title}</TitleBox>
                     <ContentBox>{todo.content}</ContentBox>
-                    <DetailIconBox>
+                    <DetailIconBox isdoneColor={isdoneIconColor}>
                         <Heartcheck
                             icon={faHeart}
                             id="icon-heart"
-                            style={{ fill: isdoneIconColor }}
+                            // style={{ fill: isdoneIconColor }}
                             onClick={() => {
                                 dispatch(toggleItem(todo.id));
                             }}
