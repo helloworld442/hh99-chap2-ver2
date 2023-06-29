@@ -3,7 +3,6 @@ const TOGGLE = "toggle/TOGGLE";
 export const toggleItem = (items) => ({ type: TOGGLE, items });
 
 let initialState = {
-  hamburger: false,
   BorderAll: true,
   ListUl: false,
 };

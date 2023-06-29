@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-const ContentBox = styled.p`
+const ContentBox = styled.pre`
   font-size: 20px;
   color: #878787;
   padding: 0 23px;
