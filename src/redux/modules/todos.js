@@ -17,15 +17,10 @@ export const createItem = ({ title, content }) => ({
     isDone: false,
   },
 });
-export const updateItem = (id, { title, content }) => ({
+export const updateItem = (id, todo) => ({
   type: UPDATE,
   id,
-  todo: {
-    id,
-    title,
-    content,
-    isDone: false,
-  },
+  todo,
 });
 export const deleteItem = (id) => ({ type: DELETE, id });
 

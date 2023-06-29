@@ -33,7 +33,6 @@ const TodoUpdate = ({
   onContentChange,
   onSubmit,
 }) => {
-  console.log(todo);
   return (
     <TodoUpdateBlock>
       <UpdatePage>

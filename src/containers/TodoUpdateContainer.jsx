@@ -27,7 +27,10 @@ const TodoUpdateContainer = () => {
     if (title.length > 23) return alert("글자 수는 23자리 이하입니다");
     if (content.length > 1000) return alert("글자 수는 1000자리 이하입니다");
 
-    dispatch(updateItem(todo.id, { title, content }));
+    todo.title = title;
+    todo.content = content;
+
+    dispatch(updateItem(todo.id, todo));
     navigateTo("/");
   };
 
