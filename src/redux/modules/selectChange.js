@@ -3,7 +3,7 @@ const ISDONE = 'selectChange/WORKING';
 export const isDone = (item) => ({ type: ISDONE, item });
 
 const initialState = {
-    isdone: false,
+    isdone: 'all',
 };
 function workState(state = initialState, action) {
     switch (action.type) {

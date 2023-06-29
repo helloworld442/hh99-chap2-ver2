@@ -13,29 +13,34 @@ const TodoItemBlock = styled.ul`
     max-height: 600px;
     overflow-y: scroll;
     box-sizing: border-box;
-    padding: 10px 30px;
+    padding: 10px;
     margin: 0;
     list-style: none;
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: 12px 14px;
+    &::-webkit-scrollbar {
+        display: none;
+    }
 `;
 
 const TodoItem = styled.li`
     height: 108px;
     border-radius: 8px;
     box-shadow: 0px 0px 10px #e8e8e8;
-    background-color: white;
+    background-color: #edf1f3;
     padding: 14px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     transition: all 0.3s ease-in-out;
     overflow: hidden;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
     &:hover {
-        transform: scale(1.06);
-        box-shadow: 0px 0px 15px #e8e8e8;
+        background-color: #fefefe;
+        box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
     }
     &.hamburger {
         flex: 1 1 194px;
@@ -47,12 +52,12 @@ const TodoItem = styled.li`
     }
     &.ListUl {
         flex: 1 1 100%;
-        max-width: 835px;
+        max-width: 875px;
         flex-direction: row;
         align-items: center;
         height: 80px;
         &:hover {
-            transform: scale(1.03);
+            /* transform: scale(1.03); */
         }
     }
     .content-box {
@@ -99,55 +104,62 @@ function TodoListItem({ todos, workState, toggles }) {
     const dispatch = useDispatch();
     const getKeyByValue = () => {
         for (let key in toggles) {
-            if (toggles.hasOwnProperty(key) && toggles[key] === true) {
+            //hasOwnProperty():객체가 특정 프로퍼티를 가지고 있는지 불리언 값을 반환
+            if (toggles[key] && key) {
                 return key;
             }
         }
         return 'hamburger';
     };
-    let isdoneIconColor = `#878787`;
-    workState ? (isdoneIconColor = '#31af7f') : (isdoneIconColor = '#878787');
+
+    const isdoneColor = (isdone) => {
+        return isdone === true ? '#31af7f' : '#878787';
+    };
+
+    const todoList = () => {
+        console.log(workState);
+        if (workState === 'all') {
+            return todos;
+        } else {
+            return todos.filter((item) => item.isDone === workState);
+        }
+    };
 
     return (
         <TodoItemBlock>
-            {todos
-                .filter((item) => item.isDone === workState)
-                .map((item) => {
-                    return (
-                        <TodoItem key={item.id} className={getKeyByValue()}>
-                            <IconBox className={getKeyByValue()}>
-                                <IdBox className="id-box">{item.id}</IdBox>
-                                <div className="icon-box">
-                                    <Heartcheck
-                                        icon={faHeart}
-                                        id="check-icon"
-                                        style={{
-                                            fill: isdoneIconColor,
-                                        }}
-                                        onClick={() => {
-                                            dispatch(toggleItem(item.id));
-                                        }}
-                                    />
-                                    <FontAwesomeIcon
-                                        icon={faXmark}
-                                        id="delete-icon"
-                                        onClick={() => {
-                                            dispatch(deleteItem(item.id));
-                                        }}
-                                    />
-                                </div>
-                            </IconBox>
-                            <div className={`content-box ${getKeyByValue()}`}>
-                                <Link to={'/detail/' + item.id} className="link">
-                                    <div className="title" id="title">
-                                        {item.title}
-                                    </div>
-                                    <div className="content">{item.content}</div>
-                                </Link>
+            {todoList().map((item) => {
+                return (
+                    <TodoItem key={item.id} className={getKeyByValue()}>
+                        <IconBox className={getKeyByValue()} isdonecolor={isdoneColor(item.isDone)}>
+                            <IdBox className="id-box">{item.id}</IdBox>
+                            <div className="icon-box">
+                                <Heartcheck
+                                    icon={faHeart}
+                                    id="check-icon"
+                                    onClick={() => {
+                                        dispatch(toggleItem(item.id));
+                                    }}
+                                />
+                                <FontAwesomeIcon
+                                    icon={faXmark}
+                                    id="delete-icon"
+                                    onClick={() => {
+                                        dispatch(deleteItem(item.id));
+                                    }}
+                                />
                             </div>
-                        </TodoItem>
-                    );
-                })}
+                        </IconBox>
+                        <div className={`content-box ${getKeyByValue()}`}>
+                            <Link to={'/detail/' + item.id} className="link">
+                                <div className="title" id="title">
+                                    {item.title}
+                                </div>
+                                <div className="content">{item.content}</div>
+                            </Link>
+                        </div>
+                    </TodoItem>
+                );
+            })}
         </TodoItemBlock>
     );
 }

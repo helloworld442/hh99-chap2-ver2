@@ -8,6 +8,8 @@ const GlobalStyle = createGlobalStyle`
         height: 100%;
         display: flex;
         justify-content: center;
+        background: rgb(37, 205, 148);
+    /* background: linear-gradient(43deg, rgba(37, 205, 148, 1) 0%, rgba(70, 252, 224, 1) 100%); */
     }
 
     #root {

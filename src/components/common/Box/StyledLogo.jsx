@@ -2,21 +2,17 @@ import { styled } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 const StyledLogoBox = styled.div`
-    height: 234px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     #icons {
         font-size: 100px;
-        color: #fff;
+        color: #31be86;
     }
     h2 {
         padding: 0;
-        margin: 0;
         display: inline-block;
-        color: #fff;
+        color: #31be86;
         text-align: center;
         font-size: 1.8rem;
+        margin: 30px 0;
     }
 `;
 

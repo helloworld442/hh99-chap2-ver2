@@ -1,23 +1,16 @@
 import { styled } from 'styled-components';
-import StyledListUI from '../Block/StyledListUIBlock';
-import StyledDropDown from '../Block/StyledDropDownBlock';
+import TodoToggleContainer from '../../../containers/TodoToggleContainer';
 const StyledToggleBlock = styled.div`
     width: 100%;
-    height: 234px;
-    /* position: absolute;
-  top: 0;
-  right: 0; */
-    padding: 0 30px;
+    height: 174px;
     display: flex;
     justify-content: flex-end;
-    box-sizing: border-box;
-    align-items: center;
+    align-items: flex-end;
 `;
 
-const StyledToggle = () => (
+const StyledToggle = ({ toggleBtns, onClickHandler }) => (
     <StyledToggleBlock>
-        <StyledListUI />
-        <StyledDropDown />
+        <TodoToggleContainer toggleBtns={toggleBtns} onClickHandler={onClickHandler} />
     </StyledToggleBlock>
 );
 

@@ -22,13 +22,13 @@ const IconBox = styled.div`
     }
     .icon-box > #check-icon {
         height: 14px;
-        color: #878787;
+        fill: ${(props) => props.isdonecolor};
         margin-right: 8px;
         transition: all 0.3s ease-in-out;
     }
     .icon-box > #check-icon:hover,
     .icon-box > #check-icon:focus {
-        color: #31af7f;
+        fill: #31af7f;
     }
     .icon-box > #delete-icon {
         color: #878787;
