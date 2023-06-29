@@ -21,11 +21,9 @@ const IconBox = styled.div`
   }
   > #check-icon {
     fill: ${(props) => props.isdonecolor};
-    transition: all 0.5s ease-in-out;
     height: 16px;
   }
   > #delete-icon {
-    transition: all 0.5s ease-in-out;
     height: 16px;
   }
   > #check-icon:hover {
