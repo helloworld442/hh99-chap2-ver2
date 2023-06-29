@@ -78,7 +78,7 @@ function TodoListItem({ todos, workState, toggles }) {
       {todoList().map((item, idx) => {
         return (
           <TodoItem key={item.id} className={getKeyByValue()}>
-            <IdBox className={getKeyByValue()}>{item.id}</IdBox>
+            <IdBox className={getKeyByValue()}>{idx + 1}</IdBox>
             <StyledContent item={item} getKeyByvalue={getKeyByValue()} />
             <IconBox
               className={getKeyByValue()}
