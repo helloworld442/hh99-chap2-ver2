@@ -1,70 +1,105 @@
-# Getting Started with Create React App
+# TO-DO LIST
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 프로젝트 개요
 
-## Available Scripts
+react TO-DO-LIST 사용자가 할 일 목록을 관리할 수 있는 웹 애플리케이션입니다.
 
-In the project directory, you can run:
+## 배포
 
-### `yarn start`
+📎[TO-DO LIST](https://hh99-chap2-ver2-6s2z.vercel.app/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<img src = "./img/background.png">
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 구현 기능
 
-### `yarn test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- TODO 추가 : TODO 제목과 상세내용을 입력하고 저장
+- TODO 수정 : TODO 상세페이지에서 TODO의 내용을 수정
+- TODO 삭제 : TODO를 삭제할 수 있습니다.
+- TODO 완료/미완료 표시 : 체크 아이콘을 클릭하여 완료/미완료 TODO를 구별
+- TODO 필터링 : 전체 TODO, 완료 TODO, 미완료 TODO를 필터링 하여 페이지에 보여줌
+- TODOLIST 레이아웃 전환 : 레이아웃 변환 토글 버튼을 통해 card, list 2가지 레이아웃 제공
 
-### `yarn build`
+<br />
+<br />
+<br />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 프로젝트 구조
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 페이지 구성
 
-### `yarn eject`
+- 메인페이지
+- 상세페이지
+- 수정페이지
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<br />
+<br />
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 컴포넌트 구조
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+node_modules/
+public/
+    index.html
+src/
+    components/
+        common/                     : 공통 UI 요소 스타일 컴포넌트 폴더
+            Block/
+            Box/
+            Button/
+            Input/
+        todo/                       : todo UI 컴포넌트 파일
+            TodoDetail.jsx
+            TodoInsert.jsx
+            TodoList.jsx
+            TodoListItem.jsx
+            TodoTemPlate.jsx
+            TodoUpdate.jsx
+    containers/                     : 컴포넌트 컨테이너
+        TodoDetailContainer.jsx
+        TodoInsertContainer.jsx
+        TodoListContainer.jsx
+        TodoToggleContainer.jsx
+        TodoUpdateContainer.jsx
+    lib/                            : 이미지 파일 등 리소스 파일
+        assets/
+    pages/                          : 페이지 컴포넌트
+        Detail.jsx
+        Main.jsx
+        Update.jsx
+    redux/                          : 리덕스
+        config/                     : 리덕스 스토어
+        modules/                    : action values, action creators, reducer
+          selectChange.js
+          todos.js
+          toggle.js
+    utils/
+        GlobalStyle.jsx             : 글로벌 스타일 정의
+    App.js
+    index.js
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<br />
+<br />
+<br />
 
-## Learn More
+## 프로젝트 라이센스 정보 명시
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[fontawesome](https://fontawesome.com/) <br />
+[pinterest](https://www.pinterest.co.kr)
 
-### Code Splitting
+<br />
+<br />
+<br />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 작성자
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 김민승
+- 김혜경
