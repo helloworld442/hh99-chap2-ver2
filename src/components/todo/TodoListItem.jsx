@@ -12,7 +12,7 @@ const TodoItemBlock = styled.ul`
   max-height: 62.3vh;
   overflow-y: scroll;
   box-sizing: border-box;
-  padding: 10px;
+  padding: 0;
   margin: 0;
   list-style: none;
   display: flex;
@@ -78,7 +78,7 @@ function TodoListItem({ todos, workState, toggles }) {
       {todoList().map((item, idx) => {
         return (
           <TodoItem key={item.id} className={getKeyByValue()}>
-            <IdBox className={getKeyByValue()}>{idx + 1}</IdBox>
+            <IdBox className={getKeyByValue()}>{item.id}</IdBox>
             <StyledContent item={item} getKeyByvalue={getKeyByValue()} />
             <IconBox
               className={getKeyByValue()}

@@ -1,29 +1,28 @@
-import { styled } from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { styled } from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 const StyledLogoBox = styled.div`
-    #icons {
-        font-size: 100px;
-        color: #31be86;
-    }
-    h2 {
-        padding: 0;
-        display: inline-block;
-        color: #31be86;
-        text-align: center;
-        font-size: 1.8rem;
-        margin: 30px 0;
-    }
+  display: flex;
+  align-items: center;
+  #icons {
+    font-size: 30px;
+    color: #31be86;
+  }
+  h2 {
+    padding-left: 16px;
+    margin: 0;
+    display: inline-block;
+    color: #31be86;
+    text-align: center;
+    font-size: 1.8rem;
+  }
 `;
 
 const StyledLogo = () => (
-    <StyledLogoBox>
-        <h2>
-            <FontAwesomeIcon icon={faBars} id="icons" />
-            <br />
-            TODOLIST
-        </h2>
-    </StyledLogoBox>
+  <StyledLogoBox>
+    <FontAwesomeIcon icon={faBars} id="icons" />
+    <h2>TODOLIST</h2>
+  </StyledLogoBox>
 );
 
 export default StyledLogo;

@@ -16,6 +16,7 @@ const BackBut = styled.button`
   border-radius: 18px;
   position: relative;
   transition: all 0.2s ease-in-out;
+  cursor: pointer;
   #icon-reply {
     font-size: 20px;
     position: absolute;

@@ -11,16 +11,25 @@ const DetailIconBox = styled.div`
     height: 32px;
     fill: ${(props) => props.isdoneColor};
     margin-right: 18px;
+    cursor: pointer;
   }
   #icon-heart:hover {
+    fill: #59d8a1;
+  }
+
+  #icon-heart:active {
     fill: #31be86;
   }
   #icon-Xmark {
     height: 32px;
     margin-bottom: 2px;
+    cursor: pointer;
   }
   #icon-Xmark:hover {
-    fill: #ff3322;
+    fill: #ff7c6e;
+  }
+  #icon-Xmark:active {
+    fill: red;
   }
 `;
 

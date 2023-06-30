@@ -22,14 +22,22 @@ const IconBox = styled.div`
   > #check-icon {
     fill: ${(props) => props.isdonecolor};
     height: 16px;
+    cursor: pointer;
   }
   > #delete-icon {
     height: 16px;
+    cursor: pointer;
   }
   > #check-icon:hover {
-    fill: #31af7f;
+    fill: #59d8a1;
+  }
+  > #check-icon:active {
+    fill: #31be86;
   }
   > #delete-icon:hover {
+    fill: #ff7c6e;
+  }
+  > #delete-icon:active {
     fill: red;
   }
 `;

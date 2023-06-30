@@ -14,6 +14,7 @@ const StyledButtonBox = styled.div`
     font-weight: 700;
     transition: all 0.3s ease-in-out;
     box-shadow: 5px 5px 5px #1f9361, -3px -3px 5px #3edd99;
+    cursor: pointer;
     &:hover {
       box-shadow: 2px 2px 5px #1f9361, 2px -2px 5px #3edd99;
       font-size: 14px;

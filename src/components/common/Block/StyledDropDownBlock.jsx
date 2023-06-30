@@ -3,14 +3,13 @@ import { styled } from "styled-components";
 const StyledDropDownBlock = styled.div`
   box-sizing: border-box;
   padding: 7px 9px;
-  margin: 10px;
+  margin: 10px 0;
   display: flex;
+  align-items: center;
   border: none;
   border-radius: 25px;
   box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
   background-color: #fefefe;
-
-  position: relative;
   transition: all 0.3s ease-in-out;
   outline: none;
   font-size: 14px;
@@ -29,6 +28,7 @@ const StyledDropDownBlock = styled.div`
     font-weight: 500;
     display: flex;
     align-items: center;
+    cursor: pointer;
     justify-content: space-around;
     .countNum {
       display: flex;

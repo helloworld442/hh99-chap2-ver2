@@ -15,6 +15,7 @@ const StyledListUIBlock = styled.div`
   box-shadow: inset 2px 2px 2px #94d3c1, inset -1px -1px 2px #fff;
   box-sizing: border-box;
   display: flex;
+  align-items: center;
 `;
 const ListIcon = styled.div`
   box-sizing: border-box;
@@ -29,13 +30,18 @@ const ListIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   &:nth-child(1) {
     margin-right: 12px;
   }
-  &:hover,
-  &:focus {
+  &:hover {
+    color: #59d8a1;
+    fill: #59d8a1;
+  }
+  &:active {
     background: #fff;
     color: #31be86;
+    fill: #31be86;
     box-shadow: 1px 1px 2px #babecc, -1px -1px 2px #fff;
   }
   &.active {

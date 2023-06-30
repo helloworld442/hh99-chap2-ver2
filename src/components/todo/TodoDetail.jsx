@@ -45,7 +45,11 @@ const DetailPage = styled.div`
     height: 31px;
     transform: translate(24px, 49px);
     color: #b8b8b8;
+    cursor: pointer;
     &:hover {
+      color: #59d8a1;
+    }
+    &:active {
       color: #31be86;
     }
   }

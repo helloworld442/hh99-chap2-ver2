@@ -1,22 +1,21 @@
 import React from "react";
 import { styled } from "styled-components";
-import TodoToggleContainer from "../../../containers/TodoToggleContainer";
 const StyledToggleBlock = styled.div`
   width: 100%;
-  height: 45px;
-  margin: 110px 0 20px;
+  height: 80px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
+  > .toggle-box {
+    display: flex;
+  }
 `;
 
-const StyledToggle = ({ toggleBtns, onClickHandler }) => (
-  <StyledToggleBlock>
-    <TodoToggleContainer
-      toggleBtns={toggleBtns}
-      onClickHandler={onClickHandler}
-    />
-  </StyledToggleBlock>
+const StyledToggle = ({ children }) => (
+  <StyledToggleBlock>{children}</StyledToggleBlock>
 );
 
 export default React.memo(StyledToggle);

@@ -2,22 +2,17 @@ import { styled } from "styled-components";
 import StyledInput from "../common/Input/StyledInput";
 import StyledTextArea from "../common/Input/StyledTextArea";
 import StyledButton from "../common/Button/StyledButton";
-import StyledLogo from "../common/Box/StyledLogo";
 import { useState } from "react";
 const TodoInsertBlock = styled.div`
   width: 304px;
   height: 100%;
   border-radius: 0 25px 0 0 / 0 25px 0 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
   form {
-    height: 55vh;
+    height: 63vh;
     padding: 25px;
+    margin: 0 20px 0 0;
     border-radius: 15px;
     background: #edf1f3;
-    margin: 0 20px 0 20px;
     box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.1);
     background-color: #31be86;
     color: #fff;
@@ -48,7 +43,6 @@ const TodoInsert = ({ onInsertHandler }) => {
 
   return (
     <TodoInsertBlock>
-      <StyledLogo />
       <form onSubmit={onSubmitHandler}>
         <StyledInput value={title} onChange={onTitleChangeHandler} />
         <StyledTextArea value={content} onChange={onContentChangeHandler} />
